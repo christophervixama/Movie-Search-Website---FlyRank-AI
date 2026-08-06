@@ -18,7 +18,7 @@ export const Header: React.FC<HeaderProps> = ({ onSearch, setView, currentView }
 
   return (
     <header style={{ display: 'flex', justifyContent: 'between', padding: '1rem', background: '#111', color: '#fff', alignItems: 'center' }}>
-      <h2>MediaVault</h2>
+      <h2>VixamaMedia</h2>
       <nav>
         <button 
           onClick={() => setView('home')} 
