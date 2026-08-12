@@ -56,7 +56,13 @@ function App() {
     <div style={{ minHeight: '100vh', background: '#222', color: '#fff', fontFamily: 'sans-serif', width: '100%' }}>
       <Header onSearch={handleSearch} setView={setView} currentView={view} />
       
-      <main style={{ padding: '1rem' }}>
+      <main style={{ 
+  padding: '2rem 2.5rem', 
+  maxWidth: '1400px', 
+  margin: '0 auto',
+  width: '100%',
+  boxSizing: 'border-box'
+}}>
         {loading ? (
           <div style={{ textAlign: 'center', padding: '3rem' }}>Loading cinematic records...</div>
         ) : view === 'home' ? (
