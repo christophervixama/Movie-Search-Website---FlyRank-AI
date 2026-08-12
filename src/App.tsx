@@ -6,7 +6,10 @@ import type { Movie } from './components/MovieGrid';
 function App() {
   const [movies, setMovies] = useState<Movie[]>([]);
   const [favorites, setFavorites] = useState<Movie[]>([]);
-  const [view, setView] = useState<'home' | 'favorites'>('home');
+  const [view, setView] = useState<'home' | 'favorites'>(() => {
+  const saved = localStorage.getItem('media-vault-view');
+  return (saved === 'favorites' ? 'favorites' : 'home');
+});
   const [loading, setLoading] = useState(false);
 
   // Add this function inside the App component
