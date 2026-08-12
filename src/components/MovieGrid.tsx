@@ -17,7 +17,7 @@ export const MovieGrid: React.FC<MovieGridProps> = ({ movies, favorites, onToggl
   if (movies.length === 0) {
     return (
       <div style={{ textAlign: 'center', padding: '3rem', color: '#888' }}>
-        <p>No movies found. Try searching for something above!</p>
+        <p>Welcome to VixamaMedia. Try searching for something above!</p>
       </div>
     );
   }
