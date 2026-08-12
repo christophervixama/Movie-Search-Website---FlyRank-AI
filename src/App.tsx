@@ -26,6 +26,10 @@ function App() {
     }
   }, []);
 
+  useEffect(() => {
+  localStorage.setItem('media-vault-view', view);
+}, [view]);
+
   // Use a free API key to pull actual movie data from a public registry
   const handleSearch = async (query: string) => {
     setLoading(true);
