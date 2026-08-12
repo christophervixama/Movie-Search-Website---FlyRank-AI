@@ -22,6 +22,10 @@ export const Header: React.FC<HeaderProps> = ({
     }
   };
 
+  const handleClear = () => {
+  setInput('');
+  };
+
   return (
     <header
       style={{
