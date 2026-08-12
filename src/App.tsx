@@ -9,6 +9,12 @@ function App() {
   const [view, setView] = useState<'home' | 'favorites'>('home');
   const [loading, setLoading] = useState(false);
 
+  // Add this function inside the App component
+  const handleResetHome = () => {
+    setView('home');
+    setMovies([]);          // ← this is the important part
+  };
+
   // Load favorites from local memory when the app opens
   useEffect(() => {
     const savedFavs = localStorage.getItem('media-vault-favs');
@@ -53,8 +59,14 @@ function App() {
   };
 
   return (
-    <div style={{ minHeight: '100vh', background: '#222', color: '#fff', fontFamily: 'sans-serif', width: '100%' }}>
-      <Header onSearch={handleSearch} setView={setView} currentView={view} />
+  <div style={{ minHeight: '100vh', background: '#222', color: '#fff', fontFamily: 'sans-serif', width: '100%' }}>
+  
+  <Header 
+  onSearch={handleSearch} 
+  setView={setView} 
+  currentView={view}
+  onLogoClick={handleResetHome}   // ← new prop
+  />
       
       <main style={{ 
   padding: '2rem 2.5rem', 
