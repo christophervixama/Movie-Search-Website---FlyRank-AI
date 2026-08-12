@@ -4,6 +4,7 @@ interface HeaderProps {
   onSearch: (query: string) => void;
   setView: (view: 'home' | 'favorites') => void;
   currentView: 'home' | 'favorites';
+  onLogoClick: () => void;          // ← add this
 }
 
 export const Header: React.FC<HeaderProps> = ({ onSearch, setView, currentView }) => {
