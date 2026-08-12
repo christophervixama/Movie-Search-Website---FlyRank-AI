@@ -4,14 +4,14 @@ interface HeaderProps {
   onSearch: (query: string) => void;
   setView: (view: 'home' | 'favorites') => void;
   currentView: 'home' | 'favorites';
-  onLogoClick: () => void;          // ← add this
+  onLogoClick: () => void;
 }
 
-export const Header: React.FC<HeaderProps> = ({ 
-  onSearch, 
-  setView, 
+export const Header: React.FC<HeaderProps> = ({
+  onSearch,
+  setView,
   currentView,
-  onLogoClick          // ← add this
+  onLogoClick,
 }) => {
   const [input, setInput] = useState('');
 
@@ -23,7 +23,7 @@ export const Header: React.FC<HeaderProps> = ({
   };
 
   const handleClear = () => {
-  setInput('');
+    setInput('');
   };
 
   return (
@@ -45,20 +45,20 @@ export const Header: React.FC<HeaderProps> = ({
       }}
     >
       {/* Brand */}
-  <h2
-    style={{
-    margin: 0,
-    fontSize: '1.45rem',
-    fontWeight: 600,
-    letterSpacing: '-0.02em',
-    whiteSpace: 'nowrap',
-    cursor: 'pointer',
-    color: '#ffffff',          // ← force white, independent of theme
-    }}
-    onClick={onLogoClick}
-  >
-    VixamaMedia
-  </h2>
+      <h2
+        style={{
+          margin: 0,
+          fontSize: '1.45rem',
+          fontWeight: 600,
+          letterSpacing: '-0.02em',
+          whiteSpace: 'nowrap',
+          cursor: 'pointer',
+          color: '#ffffff',
+        }}
+        onClick={onLogoClick}
+      >
+        VixamaMedia
+      </h2>
 
       {/* Navigation */}
       <nav style={{ display: 'flex', gap: '0.4rem' }}>
@@ -97,85 +97,84 @@ export const Header: React.FC<HeaderProps> = ({
 
       {/* Search */}
       <form
-  onSubmit={handleSubmit}
-  style={{
-    display: 'flex',
-    gap: '0.5rem',
-    alignItems: 'center',
-    flex: '0 1 420px',      // slightly wider to fit the Clear button
-    maxWidth: '440px',
-  }}
->
-  {/* Clear button */}
-  <button
-    type="button"
-    onClick={handleClear}
-    style={{
-      padding: '0.55rem 1.1rem',
-      borderRadius: '999px',
-      border: '1px solid #333',
-      background: 'transparent',
-      color: '#aaa',
-      fontWeight: 500,
-      fontSize: '0.95rem',
-      cursor: 'pointer',
-      whiteSpace: 'nowrap',
-      transition: 'all 0.15s ease',
-    }}
-    onMouseEnter={(e) => {
-      e.currentTarget.style.background = '#1f1f1f';
-      e.currentTarget.style.color = '#ddd';
-      e.currentTarget.style.borderColor = '#555';
-    }}
-    onMouseLeave={(e) => {
-      e.currentTarget.style.background = 'transparent';
-      e.currentTarget.style.color = '#aaa';
-      e.currentTarget.style.borderColor = '#333';
-    }}
-  >
-    Clear
-  </button>
+        onSubmit={handleSubmit}
+        style={{
+          display: 'flex',
+          gap: '0.5rem',
+          alignItems: 'center',
+          flex: '0 1 420px',
+          maxWidth: '440px',
+        }}
+      >
+        <button
+          type="button"
+          onClick={handleClear}
+          style={{
+            padding: '0.55rem 1.1rem',
+            borderRadius: '999px',
+            border: '1px solid #333',
+            background: 'transparent',
+            color: '#aaa',
+            fontWeight: 500,
+            fontSize: '0.95rem',
+            cursor: 'pointer',
+            whiteSpace: 'nowrap',
+            transition: 'all 0.15s ease',
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.background = '#1f1f1f';
+            e.currentTarget.style.color = '#ddd';
+            e.currentTarget.style.borderColor = '#555';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.background = 'transparent';
+            e.currentTarget.style.color = '#aaa';
+            e.currentTarget.style.borderColor = '#333';
+          }}
+        >
+          Clear
+        </button>
 
-  <input
-    type="text"
-    value={input}
-    onChange={(e) => setInput(e.target.value)}
-    placeholder="Search movies..."
-    style={{
-      flex: 1,
-      padding: '0.55rem 1rem',
-      borderRadius: '999px',
-      border: '1px solid #333',
-      background: '#1a1a1a',
-      color: '#fff',
-      fontSize: '0.95rem',
-      outline: 'none',
-      transition: 'border-color 0.15s ease',
-    }}
-    onFocus={(e) => (e.currentTarget.style.borderColor = '#555')}
-    onBlur={(e) => (e.currentTarget.style.borderColor = '#333')}
-  />
+        <input
+          type="text"
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          placeholder="Search movies..."
+          style={{
+            flex: 1,
+            padding: '0.55rem 1rem',
+            borderRadius: '999px',
+            border: '1px solid #333',
+            background: '#1a1a1a',
+            color: '#fff',
+            fontSize: '0.95rem',
+            outline: 'none',
+            transition: 'border-color 0.15s ease',
+          }}
+          onFocus={(e) => (e.currentTarget.style.borderColor = '#555')}
+          onBlur={(e) => (e.currentTarget.style.borderColor = '#333')}
+        />
 
-  <button
-    type="submit"
-    style={{
-      padding: '0.55rem 1.25rem',
-      borderRadius: '999px',
-      border: 'none',
-      background: '#3a3a3a',
-      color: '#fff',
-      fontWeight: 500,
-      fontSize: '0.95rem',
-      cursor: 'pointer',
-      whiteSpace: 'nowrap',
-      transition: 'background 0.15s ease',
-    }}
-    onMouseEnter={(e) => (e.currentTarget.style.background = '#4a4a4a')}
-    onMouseLeave={(e) => (e.currentTarget.style.background = '#3a3a3a')}
-  >
-    Search
-    </button>
-  </form>
-</header>
+        <button
+          type="submit"
+          style={{
+            padding: '0.55rem 1.25rem',
+            borderRadius: '999px',
+            border: 'none',
+            background: '#3a3a3a',
+            color: '#fff',
+            fontWeight: 500,
+            fontSize: '0.95rem',
+            cursor: 'pointer',
+            whiteSpace: 'nowrap',
+            transition: 'background 0.15s ease',
+          }}
+          onMouseEnter={(e) => (e.currentTarget.style.background = '#4a4a4a')}
+          onMouseLeave={(e) => (e.currentTarget.style.background = '#3a3a3a')}
+        >
+          Search
+        </button>
+      </form>
+    </header>
   );
 };
