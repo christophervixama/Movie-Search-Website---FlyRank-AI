@@ -6,10 +6,7 @@ import type { Movie } from './components/MovieGrid';
 function App() {
   const [movies, setMovies] = useState<Movie[]>([]);
   const [favorites, setFavorites] = useState<Movie[]>([]);
-  const [view, setView] = useState<'home' | 'favorites'>(() => {
-  const saved = localStorage.getItem('media-vault-view');
-  return (saved === 'favorites' ? 'favorites' : 'home');
-});
+  const [view, setView] = useState<'home' | 'favorites'>('home');
   const [loading, setLoading] = useState(false);
 
   // Add this function inside the App component
@@ -25,10 +22,6 @@ function App() {
       setFavorites(JSON.parse(savedFavs));
     }
   }, []);
-
-  useEffect(() => {
-  localStorage.setItem('media-vault-view', view);
-}, [view]);
 
   // Use a free API key to pull actual movie data from a public registry
   const handleSearch = async (query: string) => {
