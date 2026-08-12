@@ -53,7 +53,7 @@ function App() {
   };
 
   return (
-    <div style={{ minHeight: '100vh', background: '#222', color: '#fff', fontFamily: 'sans-serif' }}>
+    <div style={{ minHeight: '100vh', background: '#222', color: '#fff', fontFamily: 'sans-serif', width: '100%' }}>
       <Header onSearch={handleSearch} setView={setView} currentView={view} />
       
       <main style={{ padding: '1rem' }}>
