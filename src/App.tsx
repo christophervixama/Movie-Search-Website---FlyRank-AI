@@ -116,7 +116,7 @@ function App() {
               movies={favorites}
               favorites={favorites}
               onToggleFavorite={handleToggleFavorite}
-              emptyMessage="No favorites yet. Try adding some to your vault!"
+              emptyMessage="No favorites yet. Try adding some to personalize your vault!"
             />
           </div>
         )}
