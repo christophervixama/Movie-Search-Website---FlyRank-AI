@@ -17,92 +17,122 @@ export const Header: React.FC<HeaderProps> = ({ onSearch, setView, currentView }
   };
 
   return (
-  <header
-    style={{
-      display: 'flex',
-      justifyContent: 'space-between',   // ← fixed
-      alignItems: 'center',
-      gap: '1.5rem',
-      padding: '0.85rem 2rem',
-      background: '#111',
-      color: '#fff',
-      borderBottom: '1px solid #333',    // full-width horizontal line
-      width: '100%',
-      boxSizing: 'border-box',
-    }}
-  >
-    {/* Left: brand */}
-    <h2 style={{ margin: 0, fontSize: '1.4rem', whiteSpace: 'nowrap' }}>
-      VixamaMedia
-    </h2>
-
-    {/* Center: nav */}
-    <nav style={{ display: 'flex', gap: '0.75rem' }}>
-      <button
-        onClick={() => setView('home')}
-        style={{
-          padding: '0.4rem 0.9rem',
-          borderRadius: '6px',
-          border: 'none',
-          background: currentView === 'home' ? '#333' : 'transparent',
-          color: '#fff',
-          fontWeight: currentView === 'home' ? 600 : 400,
-          cursor: 'pointer',
-        }}
-      >
-        Home
-      </button>
-      <button
-        onClick={() => setView('favorites')}
-        style={{
-          padding: '0.4rem 0.9rem',
-          borderRadius: '6px',
-          border: 'none',
-          background: currentView === 'favorites' ? '#333' : 'transparent',
-          color: '#fff',
-          fontWeight: currentView === 'favorites' ? 600 : 400,
-          cursor: 'pointer',
-        }}
-      >
-        Favorites
-      </button>
-    </nav>
-
-    {/* Right: search */}
-    <form
-      onSubmit={handleSubmit}
-      style={{ display: 'flex', gap: '0.5rem', flex: '0 1 320px' }}
+    <header
+      style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        gap: '2rem',
+        padding: '0.9rem 2.5rem',
+        background: '#0f0f0f',
+        color: '#fff',
+        borderBottom: '1px solid #2a2a2a',
+        width: '100%',
+        boxSizing: 'border-box',
+        position: 'sticky',
+        top: 0,
+        zIndex: 50,
+      }}
     >
-      <input
-        type="text"
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-        placeholder="Search movies..."
+      {/* Brand */}
+      <h2
         style={{
-          flex: 1,
-          padding: '0.5rem 0.75rem',
-          borderRadius: '6px',
-          border: '1px solid #444',
-          background: '#1a1a1a',
-          color: '#fff',
-          outline: 'none',
-        }}
-      />
-      <button
-        type="submit"
-        style={{
-          padding: '0.5rem 1rem',
-          borderRadius: '6px',
-          border: 'none',
-          background: '#444',
-          color: '#fff',
-          cursor: 'pointer',
+          margin: 0,
+          fontSize: '1.45rem',
+          fontWeight: 600,
+          letterSpacing: '-0.02em',
           whiteSpace: 'nowrap',
+          cursor: 'pointer',
+        }}
+        onClick={() => setView('home')}
+      >
+        VixamaMedia
+      </h2>
+
+      {/* Navigation */}
+      <nav style={{ display: 'flex', gap: '0.4rem' }}>
+        {(['home', 'favorites'] as const).map((view) => (
+          <button
+            key={view}
+            onClick={() => setView(view)}
+            style={{
+              padding: '0.45rem 1.1rem',
+              borderRadius: '999px',
+              border: 'none',
+              background: currentView === view ? '#2a2a2a' : 'transparent',
+              color: currentView === view ? '#fff' : '#aaa',
+              fontWeight: currentView === view ? 600 : 450,
+              fontSize: '0.95rem',
+              cursor: 'pointer',
+              transition: 'all 0.15s ease',
+            }}
+            onMouseEnter={(e) => {
+              if (currentView !== view) {
+                e.currentTarget.style.background = '#1f1f1f';
+                e.currentTarget.style.color = '#ddd';
+              }
+            }}
+            onMouseLeave={(e) => {
+              if (currentView !== view) {
+                e.currentTarget.style.background = 'transparent';
+                e.currentTarget.style.color = '#aaa';
+              }
+            }}
+          >
+            {view === 'home' ? 'Home' : 'Favorites'}
+          </button>
+        ))}
+      </nav>
+
+      {/* Search */}
+      <form
+        onSubmit={handleSubmit}
+        style={{
+          display: 'flex',
+          gap: '0.5rem',
+          flex: '0 1 340px',
+          maxWidth: '360px',
         }}
       >
-        Search
-      </button>
-    </form>
-  </header>
-);
+        <input
+          type="text"
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          placeholder="Search movies..."
+          style={{
+            flex: 1,
+            padding: '0.55rem 1rem',
+            borderRadius: '999px',
+            border: '1px solid #333',
+            background: '#1a1a1a',
+            color: '#fff',
+            fontSize: '0.95rem',
+            outline: 'none',
+            transition: 'border-color 0.15s ease',
+          }}
+          onFocus={(e) => (e.currentTarget.style.borderColor = '#555')}
+          onBlur={(e) => (e.currentTarget.style.borderColor = '#333')}
+        />
+        <button
+          type="submit"
+          style={{
+            padding: '0.55rem 1.25rem',
+            borderRadius: '999px',
+            border: 'none',
+            background: '#3a3a3a',
+            color: '#fff',
+            fontWeight: 500,
+            fontSize: '0.95rem',
+            cursor: 'pointer',
+            whiteSpace: 'nowrap',
+            transition: 'background 0.15s ease',
+          }}
+          onMouseEnter={(e) => (e.currentTarget.style.background = '#4a4a4a')}
+          onMouseLeave={(e) => (e.currentTarget.style.background = '#3a3a3a')}
+        >
+          Search
+        </button>
+      </form>
+    </header>
+  );
 };
