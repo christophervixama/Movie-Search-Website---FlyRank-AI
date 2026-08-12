@@ -73,7 +73,15 @@ function App() {
           />
         ) : (
           <div>
-            <h3 style={{ paddingLeft: '2rem', marginTop: '2rem' }}>Your Curated Vault Favorites</h3>
+            <h3 style={{ 
+  margin: '0 0 1.5rem 0', 
+  fontSize: '1.35rem', 
+  fontWeight: 500,
+  color: '#e0e0e0',
+  letterSpacing: '-0.01em'
+}}>
+  Your Curated Vault Favorites
+</h3>
             <MovieGrid 
               movies={favorites} 
               favorites={favorites} 
