@@ -54,11 +54,18 @@ export const MovieGrid: React.FC<MovieGridProps> = ({
               justifyContent: 'space-between',
             }}
           >
-            <img
-              src={movie.Poster !== 'N/A' ? movie.Poster : 'https://via.placeholder.com/200x300?text=No+Poster'}
-              alt={movie.Title}
-              style={{ width: '100%', height: '300px', objectFit: 'cover' }}
-            />
+  <img
+    src={
+      movie.Poster && movie.Poster !== 'N/A'
+      ? movie.Poster.replace(/^http:/, 'https:')
+      : 'https://via.placeholder.com/200x300?text=No+Poster'
+    }
+    alt={movie.Title}
+    style={{ width: '100%', height: '300px', objectFit: 'cover' }}
+    onError={(e) => {
+    e.currentTarget.src = 'https://via.placeholder.com/200x300?text=No+Poster';
+    }}
+  />
             <div style={{ padding: '1rem' }}>
               <h4 style={{ margin: '0 0 0.5rem 0', fontSize: '1rem' }}>{movie.Title}</h4>
               <p style={{ margin: '0 0 1rem 0', color: '#aaa', fontSize: '0.9rem' }}>
