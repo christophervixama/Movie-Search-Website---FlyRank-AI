@@ -45,19 +45,20 @@ export const Header: React.FC<HeaderProps> = ({
       }}
     >
       {/* Brand */}
-      <h2
-        style={{
-          margin: 0,
-          fontSize: '1.45rem',
-          fontWeight: 600,
-          letterSpacing: '-0.02em',
-          whiteSpace: 'nowrap',
-          cursor: 'pointer',
-        }}
-        onClick={onLogoClick}
-      >
-        VixamaMedia
-      </h2>
+  <h2
+    style={{
+    margin: 0,
+    fontSize: '1.45rem',
+    fontWeight: 600,
+    letterSpacing: '-0.02em',
+    whiteSpace: 'nowrap',
+    cursor: 'pointer',
+    color: '#ffffff',          // ← force white, independent of theme
+    }}
+    onClick={onLogoClick}
+  >
+    VixamaMedia
+  </h2>
 
       {/* Navigation */}
       <nav style={{ display: 'flex', gap: '0.4rem' }}>
