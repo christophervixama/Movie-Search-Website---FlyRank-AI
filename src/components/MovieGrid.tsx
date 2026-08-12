@@ -13,7 +13,7 @@ interface MovieGridProps {
   onToggleFavorite: (movie: Movie) => void;
 }
 
-export const MovieGrid: React.FC<MovieGridProps> = ({ movies }) => {
+export const MovieGrid: React.FC<MovieGridProps> = ({ movies, favorites, onToggleFavorite }) => {
   if (movies.length === 0) {
     return (
       <div style={{ textAlign: 'center', padding: '3rem', color: '#888' }}>
