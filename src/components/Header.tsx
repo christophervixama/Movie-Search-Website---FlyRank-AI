@@ -7,7 +7,12 @@ interface HeaderProps {
   onLogoClick: () => void;          // ← add this
 }
 
-export const Header: React.FC<HeaderProps> = ({ onSearch, setView, currentView }) => {
+export const Header: React.FC<HeaderProps> = ({ 
+  onSearch, 
+  setView, 
+  currentView,
+  onLogoClick          // ← add this
+}) => {
   const [input, setInput] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -45,7 +50,7 @@ export const Header: React.FC<HeaderProps> = ({ onSearch, setView, currentView }
           whiteSpace: 'nowrap',
           cursor: 'pointer',
         }}
-        onClick={() => setView('home')}
+        onClick={onLogoClick}
       >
         VixamaMedia
       </h2>
