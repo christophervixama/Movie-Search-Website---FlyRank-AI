@@ -24,7 +24,8 @@ export const Header: React.FC<HeaderProps> = ({
 
   const handleClear = () => {
   setInput('');
-  };
+  onLogoClick(); // reuses the same reset logic (clears results + goes to home)
+};
 
   return (
     <header
